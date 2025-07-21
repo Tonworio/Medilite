@@ -1,0 +1,57 @@
+body {
+  margin-top: 10rem;
+  background-image: url(Background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.interface {
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.1);
+}
+
+#lan {
+  color: green;
+  display: flex;
+  column-gap: 1rem;
+  justify-self: center;
+}
+
+select {
+  border: none;
+  color: rgb(135, 200, 235);
+}
+#sym {
+  color: green;
+}
+
+#btns {
+  display: flex;
+  column-gap: 0.5rem;
+  justify-self: center;
+}
+
+#btn1 {
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.1);
+  border: none;
+  background-color: antiquewhite;
+}
+#btn2 {
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.1);
+  border: none;
+  background-color: antiquewhite;
+}
+
+#btn1:hover {
+  opacity: 0.5;
+}
+
+#btn2:hover {
+  opacity: 0.5;
+}
+
+h1 {
+  color: green;
+}

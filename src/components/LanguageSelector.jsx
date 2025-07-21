@@ -1,9 +1,12 @@
 import React from "react";
+import "../App.css";
 
 function LanguageSelector({ selectedLang, onChange }) {
   return (
-    <div className="mb-4 text-center">
-      <label htmlFor="language" className="mr-2 font-semibold text-gray-600">🌐 Language:</label>
+    <div id="lan" className="mb-4 text-center">
+      <label htmlFor="language" className="mr-2 font-semibold text-gray-600">
+        🌐 Language:
+      </label>
       <select
         id="language"
         value={selectedLang}

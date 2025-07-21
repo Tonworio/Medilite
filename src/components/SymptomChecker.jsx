@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LanguageSelector from "./LanguageSelector";
-
+import "../App.css";
 const translations = {
   en: {
     questions: [
@@ -8,8 +8,10 @@ const translations = {
       "Do you feel nauseous or weak?",
       "Do you have a headache or chills?",
     ],
-    malaria: "🟡 You may have symptoms related to Malaria. Please consult a healthcare provider.",
-    healthy: "🟢 Symptoms don’t strongly match major conditions. Stay hydrated and monitor your health.",
+    malaria:
+      "🟡 You may have symptoms related to Malaria. Please consult a healthcare provider.",
+    healthy:
+      "🟢 Symptoms don’t strongly match major conditions. Stay hydrated and monitor your health.",
     yes: "✅ Yes",
     no: "❌ No",
   },
@@ -20,7 +22,8 @@ const translations = {
       "Ṣe o ni irora orí tabi tutù?",
     ],
     malaria: "🟡 O le ni aami arun palara. Jọwọ ṣàbẹwò si dokita kan.",
-    healthy: "🟢 Aami ko fi hàn pé o ní àìlera tó le. Mura sile, máa mu omi púpọ̀.",
+    healthy:
+      "🟢 Aami ko fi hàn pé o ní àìlera tó le. Mura sile, máa mu omi púpọ̀.",
     yes: "✅ Bẹẹni",
     no: "❌ Rárá",
   },
@@ -67,7 +70,14 @@ function SymptomChecker() {
     const synth = window.speechSynthesis;
     if (synth) {
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = lang === "yo" ? "yo-NG" : lang === "ig" ? "ig-NG" : lang === "ha" ? "ha-NG" : "en-US";
+      utterance.lang =
+        lang === "yo"
+          ? "yo-NG"
+          : lang === "ig"
+          ? "ig-NG"
+          : lang === "ha"
+          ? "ha-NG"
+          : "en-US";
       synth.cancel();
       synth.speak(utterance);
     }
@@ -88,14 +98,21 @@ function SymptomChecker() {
   };
 
   const calculateResult = (finalAnswers) => {
-    const yesCount = Object.values(finalAnswers).filter((ans) => ans.includes("Yes") || ans.includes("Ee") || ans.includes("Bẹẹni") || ans.includes("Eh")).length;
-    const finalMessage = yesCount >= 2 ? currentLang.malaria : currentLang.healthy;
+    const yesCount = Object.values(finalAnswers).filter(
+      (ans) =>
+        ans.includes("Yes") ||
+        ans.includes("Ee") ||
+        ans.includes("Bẹẹni") ||
+        ans.includes("Eh")
+    ).length;
+    const finalMessage =
+      yesCount >= 2 ? currentLang.malaria : currentLang.healthy;
     setResult(finalMessage);
     speak(finalMessage, language);
   };
 
   return (
-    <div className="text-center">
+    <div id="sym" className="text-center">
       <LanguageSelector selectedLang={language} onChange={setLanguage} />
       {result ? (
         <div className="mt-6 px-4 py-6 bg-green-50 border border-green-200 rounded-xl shadow-md animate-fade-in">
@@ -106,18 +123,24 @@ function SymptomChecker() {
           <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
             <div
               className="bg-green-500 h-2.5 rounded-full transition-all duration-500"
-              style={{ width: `${((currentQIndex + 1) / questions.length) * 100}%` }}
+              style={{
+                width: `${((currentQIndex + 1) / questions.length) * 100}%`,
+              }}
             ></div>
           </div>
-          <p className="text-gray-800 text-xl font-medium mb-6 animate-fade-in">{questions[currentQIndex]}</p>
-          <div className="flex justify-center gap-6">
+          <p className="text-gray-800 text-xl font-medium mb-6 animate-fade-in">
+            {questions[currentQIndex]}
+          </p>
+          <div id="btns" className="flex justify-center gap-6">
             <button
+              id="btn1"
               onClick={() => handleAnswer(currentLang.yes)}
               className="px-6 py-2 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-full shadow hover:scale-105 transition"
             >
               {currentLang.yes}
             </button>
             <button
+              id="btn2"
               onClick={() => handleAnswer(currentLang.no)}
               className="px-6 py-2 bg-gradient-to-r from-red-400 to-red-600 text-white rounded-full shadow hover:scale-105 transition"
             >
